@@ -1,26 +1,116 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Background - Warm, calming beige */
+    --background: 40 33% 98%;
+    --foreground: 20 14.3% 4.1%;
+    
+    /* Primary - Warm Coral (#F26B4E) */
+    --primary: 8 87% 62%;
+    --primary-foreground: 40 33% 98%;
+    
+    /* Secondary - Warm Gold (#F7B858) */
+    --secondary: 35 91% 65%;
+    --secondary-foreground: 20 14.3% 4.1%;
+    
+    /* Muted - Soft Stone */
+    --muted: 20 5.9% 90%;
+    --muted-foreground: 20 3.8% 46.1%;
+    
+    /* Accent - Warm Gold */
+    --accent: 35 91% 65%;
+    --accent-foreground: 20 14.3% 4.1%;
+    
+    /* Card & Popover - Warm Background */
+    --card: 40 33% 98%;
+    --card-foreground: 20 14.3% 4.1%;
+    --popover: 40 33% 98%;
+    --popover-foreground: 20 14.3% 4.1%;
+    
+    /* Border & Input */
+    --border: 20 5.9% 90%;
+    --input: 20 5.9% 90%;
+    
+    /* Ring - Primary Color */
+    --ring: 8 87% 62%;
+    
+    /* Destructive */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 40 33% 98%;
+
+    /* Radius */
+    --radius: 0.75rem;
+  }
+ 
+  .dark {
+    --background: 20 14.3% 4.1%;
+    --foreground: 40 33% 98%;
+ 
+    --primary: 8 87% 62%;
+    --primary-foreground: 40 33% 98%;
+ 
+    --secondary: 35 91% 65%;
+    --secondary-foreground: 20 14.3% 4.1%;
+ 
+    --muted: 20 3.8% 15.1%;
+    --muted-foreground: 20 2.9% 65.1%;
+ 
+    --accent: 35 91% 65%;
+    --accent-foreground: 20 14.3% 4.1%;
+ 
+    --popover: 20 14.3% 4.1%;
+    --popover-foreground: 40 33% 98%;
+ 
+    --card: 20 14.3% 4.1%;
+    --card-foreground: 40 33% 98%;
+ 
+    --border: 20 3.8% 15.1%;
+    --input: 20 3.8% 15.1%;
+ 
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 40 33% 98%;
+ 
+    --ring: 8 87% 62%;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Improve accessibility with focus styles */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  /* Ensure text remains readable */
+  p, li {
+    @apply leading-relaxed;
+  }
+
+  /* Headings with comfortable spacing */
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight font-medium;
+  }
+
+  /* Hero text specific styles */
+  h1 span {
+    @apply transition-colors duration-300;
+  }
 }
